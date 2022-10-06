@@ -1,6 +1,6 @@
-# [Backstage](https://backstage.io)
+# [Developar Portal]
 
-Backstage based Developer Portal
+[Backstage](https://backstage.io/) based Developer Portal
 
 To start the app, run:
 
