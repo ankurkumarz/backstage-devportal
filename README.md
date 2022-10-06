@@ -1,4 +1,4 @@
-# [Developar Portal]
+# Developar Portal
 
 [Backstage](https://backstage.io/) based Developer Portal
 
