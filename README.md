@@ -12,3 +12,6 @@ To start the app, run:
 yarn install
 yarn dev
 ```
+## Plugins
+- [SonarQube](https://github.com/backstage/backstage/blob/master/plugins/sonarqube/README.md)
+- [Jenkins] (https://github.com/backstage/backstage/tree/master/plugins/jenkins)

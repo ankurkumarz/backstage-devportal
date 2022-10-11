@@ -41,10 +41,12 @@ import {
   hasCatalogProcessingErrors,
   isOrphan,
 } from '@backstage/plugin-catalog';
-import {
+
+/*import {
   isGithubActionsAvailable,
   EntityGithubActionsContent,
-} from '@backstage/plugin-github-actions';
+} from '@backstage/plugin-github-actions';*/
+
 import {
   EntityUserProfileCard,
   EntityGroupProfileCard,
@@ -70,12 +72,17 @@ import {
 
 import {
   EntityJenkinsContent,
-  EntityLatestJenkinsRunCard,
   isJenkinsAvailable,
 } from '@backstage/plugin-jenkins';
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { EntitySonarQubeCard } from '@backstage/plugin-sonarqube';
+import {
+  EntityLastLighthouseAuditCard,
+  isLighthouseAvailable,
+  EntityLighthouseContent,
+} from '@backstage/plugin-lighthouse';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -141,11 +148,20 @@ const overviewContent = (
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
-
-    <Grid item md={4} xs={12}>
+    <Grid item md={6} >
+      <EntitySonarQubeCard variant="gridItem" />
+    </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isLighthouseAvailable}>
+        <Grid item md={6}>
+          <EntityLastLighthouseAuditCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>    
+    <Grid item md={6} xs={12}>
       <EntityLinksCard />
     </Grid>
-    <Grid item md={8} xs={12}>
+    <Grid item md={6} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
   </Grid>
@@ -155,10 +171,6 @@ const serviceEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
-    </EntityLayout.Route>
-    
-    <EntityLayout.Route path="/jenkins" title="Jenkins">
-      <EntityJenkinsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
@@ -186,7 +198,6 @@ const serviceEntityPage = (
         </Grid>
       </Grid>
     </EntityLayout.Route>
-
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
@@ -217,6 +228,11 @@ const websiteEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+    <EntityLayout.Route path="/lighthouse" title="Lighthouse">
+      <EntityLighthouseContent />
+    </EntityLayout.Route>
+
   </EntityLayout>
 );
 
@@ -334,10 +350,10 @@ const systemPage = (
         <Grid item md={6} xs={12}>
           <EntityCatalogGraphCard variant="gridItem" height={400} />
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid item md={6} xs={12}>
           <EntityLinksCard />
         </Grid>
-        <Grid item md={8}>
+        <Grid item md={6}>
           <EntityHasComponentsCard variant="gridItem" />
         </Grid>
         <Grid item md={6}>

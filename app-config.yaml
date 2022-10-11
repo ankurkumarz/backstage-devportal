@@ -1,5 +1,5 @@
 app:
-  title: Scaffolded Backstage App
+  title: Developer Portal
   baseUrl: http://localhost:3000
 
 organization:
@@ -21,13 +21,13 @@ backend:
     port: 7007
     # Uncomment the following host directive to bind to all IPv4 interfaces and
     # not just the baseUrl hostname.
-    # host: 0.0.0.0
+    host: 0.0.0.0
   csp:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: http://localhost:3000
+    #origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
@@ -45,23 +45,12 @@ backend:
     store: memory
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
-integrations:
-  github:
-    - host: github.com
-      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-      # about setting up the GitHub integration here: https://backstage.io/docs/getting-started/configuration#setting-up-a-github-integration
-      token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
-
-proxy:
-  '/jenkins/api':
-    target: 'http:localhost:8080'
-    changeOrigin: true
-    headers:
-      Authorization: Basic YW5rdXJrdW1hcjoxMTVlNGJlNzcyZTA2ZjcwZTJiZmUwMmJhYzkzMTVhMjgw
+#proxy:
+#  '/jenkins/api':
+#    target: 'http:localhost:8080'
+#    changeOrigin: true
+#    headers:
+#      Authorization: Basic YW5rdXJrdW1hcjoxMTVlNGJlNzcyZTA2ZjcwZTJiZmUwMmJhYzkzMTVhMjgw
     
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -70,7 +59,7 @@ proxy:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
@@ -80,6 +69,30 @@ auth:
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+
+  # optionally add extra headers
+  # extraRequestHeaders:
+  #   extra-header: my-value
+sonarqube:
+  instances:
+    - name: default
+      baseUrl: ${SONAR_BASE_URL}
+      # this is the usertoken generated from Sonar - SONAR API uses BASIC AUTH without any password
+      ## Just user token as USERID works
+      apiKey: ${SONAR_API_KEY}
+jenkins:
+  instances:
+    - name: devlocal
+      baseUrl: ${JENKINS_BASE_URL}
+      username: ${JENKINS_USERNAME}
+      apiKey: ${JENKINS_API_KEY}
+lighthouse:
+  baseUrl: http://localhost:3003
 
 catalog:
   import:
@@ -104,11 +117,9 @@ catalog:
       rules:
         - allow: [Template]
     
-    - type: file
-      target: ../../scaffolder-templates/rails-demo/template/rails-template-file.rb
-      rules:
-        - allow: [Template]
-
+    - type: url
+      target: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/api-info.yaml
+      
     - type: url
       target: https://github.com/ankurkumarz/backstage-micro-app/blob/master/catalog-info.yaml
 
@@ -165,9 +176,3 @@ catalog:
     ## Uncomment these lines to add more example data
     - type: url
       target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
-
-    ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]

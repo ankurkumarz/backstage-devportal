@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
-    "start": "yarn workspace app start",
-    "start-backend": "yarn workspace backend start",
+    "start": "env $(cat .env | xargs) yarn workspace app start",
+    "start-backend": "env $(cat .env | xargs) yarn workspace backend start",
     "build": "backstage-cli repo build --all",
     "build-image": "yarn workspace backend build-image",
     "tsc": "tsc",

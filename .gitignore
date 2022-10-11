@@ -47,3 +47,4 @@ site
 # Sensitive credentials
 *-credentials.yaml
 app-config.local.yaml
+.env
