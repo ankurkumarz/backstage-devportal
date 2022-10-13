@@ -1,9 +1,9 @@
 app:
-  title: Developer Portal
+  title: Developer Portal (customized by Ankur Kumar)
   baseUrl: http://localhost:3000
 
 organization:
-  name: My Company
+  name: Engineering Initiative
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -27,7 +27,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    #origin: http://localhost:3000
+    origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
@@ -50,7 +50,7 @@ backend:
 #    target: 'http:localhost:8080'
 #    changeOrigin: true
 #    headers:
-#      Authorization: Basic YW5rdXJrdW1hcjoxMTVlNGJlNzcyZTA2ZjcwZTJiZmUwMmJhYzkzMTVhMjgw
+#      Authorization: Basic 
     
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -65,7 +65,22 @@ techdocs:
 
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers: {}
+  providers:
+    github:
+      development:
+        clientId: ${GITHUB_CLIENT_ID}
+        clientSecret: ${GITHUB_CLIENT_SECRET}
+    auth0:
+      development:
+        clientId: ${AUTH_AUTH0_CLIENT_ID}
+        clientSecret: ${AUTH_AUTH0_CLIENT_SECRET}
+        domain: ${AUTH_AUTH0_DOMAIN_ID}
+
+        ##these are optional settings
+
+        #audience: ${AUTH_AUTH0_AUDIENCE}
+        #connection: ${AUTH_AUTH0_CONNECTION}
+        #connectionScope: ${AUTH_AUTH0_CONNECTION_SCOPE}
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -94,6 +109,41 @@ jenkins:
 lighthouse:
   baseUrl: http://localhost:3003
 
+costInsights:
+  engineerCost: 200000
+  products:
+    computeEngine:
+      name: Compute Engine
+      icon: compute
+    cloudStorage:
+      name: Cloud Storage
+      icon: storage
+    bigQuery:
+      name: BigQuery
+      icon: search
+  metrics:
+    DAU:
+      name: Daily Active Users
+      default: true
+    MSC:
+      name: Monthly Subscribers
+
+cloudCarbonFootprint:
+  client:
+    dateRangeType: months
+    dateRangeValue: 1
+    groupBy: week
+
+proxy:
+  '/newrelic/api':
+    target: https://api.newrelic.com
+    headers:
+      X-Api-Key: ${NEW_RELIC_USER_KEY}
+  '/newrelic/apm/api':
+    target: https://api.newrelic.com/v2
+    headers:
+      X-Api-Key: ${NEW_RELIC_REST_API_KEY}
+
 catalog:
   import:
     entityFilename: catalog-info.yaml
@@ -119,7 +169,7 @@ catalog:
     
     - type: url
       target: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/api-info.yaml
-      
+
     - type: url
       target: https://github.com/ankurkumarz/backstage-micro-app/blob/master/catalog-info.yaml
 
@@ -160,12 +210,6 @@ catalog:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
       target: ../../examples/entities.yaml
-
-    # Local example template
-    - type: file
-      target: ../../examples/template/template.yaml
-      rules:
-        - allow: [Template]
 
     # Local example organizational data
     - type: file

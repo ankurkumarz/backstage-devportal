@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { PropsWithChildren } from 'react';
+import React, { useContext, PropsWithChildren } from 'react';
 import { Link, makeStyles } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import ExtensionIcon from '@material-ui/icons/Extension';
@@ -24,6 +24,8 @@ import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
 import LighthouseIcon from '@material-ui/icons/LaptopChromebook';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
+//import { ApertureLogoFull } from './ApertureLogoFull';
+import { ApertureLogoIcon } from './ApertureLogoIcon';
 import { NavLink } from 'react-router-dom';
 import {
   Settings as SidebarSettings,
@@ -32,19 +34,22 @@ import {
 import { SidebarSearchModal } from '@backstage/plugin-search';
 import {
   Sidebar,
-  sidebarConfig,
-  SidebarDivider,
-  SidebarGroup,
-  SidebarItem,
   SidebarPage,
-  SidebarScrollWrapper,
+  sidebarConfig,
+  SidebarContext,
+  SidebarItem,
+  SidebarDivider,
   SidebarSpace,
-  useSidebarOpenState,
+  SidebarGroup,
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
+import { appThemeApiRef, useApi } from '@backstage/core-plugin-api';
 import SearchIcon from '@material-ui/icons/Search';
+import MoneyIcon from '@material-ui/icons/MonetizationOn';
+import MyCustomLogoFull from './dev-portal.png';
+import { BackstageTheme } from '@backstage/theme';
 
-const useSidebarLogoStyles = makeStyles({
+const useSidebarLogoStyles = makeStyles<BackstageTheme, { themeId: string }>({
   root: {
     width: sidebarConfig.drawerWidthClosed,
     height: 3 * sidebarConfig.logoHeight,
@@ -53,15 +58,25 @@ const useSidebarLogoStyles = makeStyles({
     alignItems: 'center',
     marginBottom: -14,
   },
-  link: {
+  link: props => ({
     width: sidebarConfig.drawerWidthClosed,
-    marginLeft: 24,
-  },
+    marginLeft: props.themeId === 'aperture' ? 10 : 24,
+  }),
 });
 
+const CustomLogoFull = () => {
+  return <img src={MyCustomLogoFull} width="180" height="180" ></img>;
+};
+
 const SidebarLogo = () => {
-  const classes = useSidebarLogoStyles();
-  const { isOpen } = useSidebarOpenState();
+  const { isOpen } = useContext(SidebarContext);
+
+  const appThemeApi = useApi(appThemeApiRef);
+  const themeId = appThemeApi.getActiveThemeId();
+  const classes = useSidebarLogoStyles({ themeId: themeId! });
+
+  const fullLogo = themeId === 'aperture' ? <CustomLogoFull /> : <LogoFull />;
+  const iconLogo = themeId === 'aperture' ? <ApertureLogoIcon /> : <LogoIcon />;
 
   return (
     <div className={classes.root}>
@@ -70,9 +85,8 @@ const SidebarLogo = () => {
         to="/"
         underline="none"
         className={classes.link}
-        aria-label="Home"
       >
-        {isOpen ? <LogoFull /> : <LogoIcon />}
+        {isOpen ? fullLogo : iconLogo}
       </Link>
     </div>
   );
@@ -94,10 +108,11 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
         {/* End global nav */}
         <SidebarDivider />
-        <SidebarScrollWrapper>
-          <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
-        </SidebarScrollWrapper>
-        <SidebarItem icon={LighthouseIcon} to="lighthouse" text="Lighthouse" />
+        <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
+        <SidebarItem icon={LighthouseIcon} to="lighthouse" text="Performance" />
+        <SidebarItem icon={ExtensionIcon} to="newrelic" text="Monitoring" />
+        <SidebarItem icon={MoneyIcon} to="cost-insights" text="Cost Insights" />
+        <SidebarItem icon={MoneyIcon} to="cloud-carbon-footprint" text="Sustainability" />
       </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />

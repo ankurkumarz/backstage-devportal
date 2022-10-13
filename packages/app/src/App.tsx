@@ -34,9 +34,37 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { PermissionedRoute } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { LighthousePage } from '@backstage/plugin-lighthouse';
+import { CostInsightsPage } from '@backstage/plugin-cost-insights';
+import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { SignInPage } from '@backstage/core-components';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { apertureTheme } from './theme/aperture';
+import { darkTheme, lightTheme } from '@backstage/theme';
+import { CloudCarbonFootprintPage } from '@cloud-carbon-footprint/backstage-plugin-frontend';
+import { NewRelicPage } from '@backstage/plugin-newrelic';
 
 const app = createApp({
   apis,
+  components: {
+        SignInPage: props => (
+          <SignInPage
+            {...props}
+            auto
+            providers={['guest',{
+              id: 'github-auth-provider',
+              title: 'GitHub',
+              message: 'Sign in using GitHub',
+              apiRef: githubAuthApiRef,
+            },
+            {
+              id: 'auth0AuthApi',
+              title: 'Auth0',
+              message: 'Sign in using Auth0',
+              apiRef: githubAuthApiRef,
+            }]}
+          />
+        ),
+  },  
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
@@ -52,6 +80,38 @@ const app = createApp({
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },
+  themes: [
+    {
+      id: 'light',
+      title: 'Light',
+      variant: 'light',
+      Provider: ({ children }) => (
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+    {
+      id: 'dark',
+      title: 'Dark',
+      variant: 'dark',
+      Provider: ({ children }) => (
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+    {
+      id: 'aperture',
+      title: 'Aperture',
+      variant: 'light',
+      Provider: ({ children }) => (
+        <ThemeProvider theme={apertureTheme}>
+          <CssBaseline>{children}</CssBaseline>
+        </ThemeProvider>
+      ),
+    },
+  ],
 });
 
 const AppProvider = app.getProvider();
@@ -93,6 +153,9 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/lighthouse" element={<LighthousePage />} />
+    <Route path="/cost-insights" element={<CostInsightsPage />} />
+    <Route path="/cloud-carbon-footprint" element={<CloudCarbonFootprintPage />} />
+    <Route path="/newrelic" element={<NewRelicPage />} />
   </FlatRoutes>
 );
 

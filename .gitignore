@@ -1,6 +1,6 @@
 # macOS
 .DS_Store
-
+.dccache
 # Logs
 logs
 *.log

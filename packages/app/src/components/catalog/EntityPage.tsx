@@ -41,7 +41,7 @@ import {
   hasCatalogProcessingErrors,
   isOrphan,
 } from '@backstage/plugin-catalog';
-
+import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
 /*import {
   isGithubActionsAvailable,
   EntityGithubActionsContent,
@@ -83,6 +83,13 @@ import {
   isLighthouseAvailable,
   EntityLighthouseContent,
 } from '@backstage/plugin-lighthouse';
+
+import {
+  isNewRelicDashboardAvailable,
+  EntityNewRelicDashboardContent,
+  EntityNewRelicDashboardCard,
+} from '@backstage/plugin-newrelic-dashboard';
+import { EntityGithubDependabotContent, isSecurityInsightsAvailable, EntitySecurityInsightsCard} from '@roadiehq/backstage-plugin-security-insights';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -164,6 +171,20 @@ const overviewContent = (
     <Grid item md={6} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isNewRelicDashboardAvailable}>
+        <Grid item md={6} xs={12}>
+          <EntityNewRelicDashboardCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isSecurityInsightsAvailable}>
+        <Grid item md={6}>
+          <EntitySecurityInsightsCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 
@@ -201,6 +222,29 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+    <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
+      <EntityAdrContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      if={isNewRelicDashboardAvailable}
+      path="/newrelic-dashboard"
+      title="Monitoring Dashboard">
+      <EntityNewRelicDashboardContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      path="/security-insights"
+      title="Security Insights">
+      <EntitySecurityInsightsCard />
+    </EntityLayout.Route>
+    <EntityLayout.Route
+      path="/dependabot"
+      title="Dependabot">
+      <EntityGithubDependabotContent />
+    </EntityLayout.Route>
+
+
   </EntityLayout>
 );
 

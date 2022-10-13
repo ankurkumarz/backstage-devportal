@@ -33,6 +33,7 @@ import sonarqube from './plugins/sonarqube';
 import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
+import ccf from './plugins/ccf';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -111,6 +112,12 @@ async function main() {
     console.log(err);
     process.exit(1);
   });
+  // add env
+  const ccfEnv = useHotMemoize(module, () =>
+  createEnv('cloud-carbon-footprint'),
+  );
+  apiRouter.use('/cloud-carbon-footprint', await ccf(ccfEnv));
+  
 }
 
 module.hot?.accept();
