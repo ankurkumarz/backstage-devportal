@@ -19,6 +19,7 @@ yarn dev
 
 ### Frontend
 - [GitHub Security Insights](https://roadie.io/backstage/plugins/security-insights/)- [Google Lighthouse](https://github.com/backstage/backstage/tree/master/plugins/lighthouse)
+- [JIRA](https://roadie.io/backstage/plugins/jira/)
 ### Backend
 - [SonarQube](https://github.com/backstage/backstage/blob/master/plugins/sonarqube/README.md)
 - [Jenkins](https://github.com/backstage/backstage/tree/master/plugins/jenkins)

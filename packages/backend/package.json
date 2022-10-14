@@ -27,6 +27,7 @@
     "@backstage/plugin-auth-node": "^0.2.5",
     "@backstage/plugin-catalog-backend": "^1.4.0",
     "@backstage/plugin-jenkins-backend": "^0.1.26",
+    "@backstage/plugin-kubernetes-backend": "^0.7.2",
     "@backstage/plugin-newrelic": "^0.3.27",
     "@backstage/plugin-permission-common": "^0.6.4",
     "@backstage/plugin-permission-node": "^0.6.5",

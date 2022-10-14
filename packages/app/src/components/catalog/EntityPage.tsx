@@ -90,6 +90,8 @@ import {
   EntityNewRelicDashboardCard,
 } from '@backstage/plugin-newrelic-dashboard';
 import { EntityGithubDependabotContent, isSecurityInsightsAvailable, EntitySecurityInsightsCard} from '@roadiehq/backstage-plugin-security-insights';
+import { EntityJiraOverviewCard, isJiraAvailable } from '@roadiehq/backstage-plugin-jira';
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -185,6 +187,13 @@ const overviewContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isJiraAvailable}>
+        <Grid item md={6}>
+          <EntityJiraOverviewCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 
@@ -243,7 +252,9 @@ const serviceEntityPage = (
       title="Dependabot">
       <EntityGithubDependabotContent />
     </EntityLayout.Route>
-
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent refreshIntervalMs={30000} />
+    </EntityLayout.Route>
 
   </EntityLayout>
 );

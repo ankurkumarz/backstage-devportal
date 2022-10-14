@@ -26,6 +26,14 @@ backend:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
+
+    ## for JIRA
+    img-src:
+    # "'self'" and 'data' are from the backstage default but must be set since img-src is overriden
+      - "'self'"
+      - 'data:'
+      # Allow your Jira instance for @roadiehq/backstage-plugin-jira
+      - 'https://ankurkumarz.atlassian.net/'
   cors:
     origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
@@ -148,6 +156,20 @@ proxy:
     changeOrigin: true
     headers:
       Authorization: Basic ${JENKINS_BASIC_AUTH_HEADER}
+  '/jira/api':
+    target: ${JIRA_URL}
+    headers:
+      Authorization: Basic ${JIRA_TOKEN}
+      Accept: 'application/json'
+      Content-Type: 'application/json'
+      X-Atlassian-Token: 'nocheck'
+      User-Agent: "MY-UA-STRING"
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'localKubectlProxy'
 
 catalog:
   import:

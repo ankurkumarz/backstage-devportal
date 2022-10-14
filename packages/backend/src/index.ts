@@ -34,6 +34,7 @@ import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
 import ccf from './plugins/ccf';
+import kubernetes from './plugins/kubernetes';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -80,6 +81,7 @@ async function main() {
     logger: getRootLogger(),
   });
   const createEnv = makeCreateEnv(config);
+  const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
 
   const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));
   const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));
@@ -100,8 +102,10 @@ async function main() {
   apiRouter.use('/search', await search(searchEnv));
   apiRouter.use('/jenkins', await jenkins(jenkinsEnv));
   apiRouter.use('/sonarqube', await sonarqube(sonarqubeEnv));
+  apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());
+  
 
   const service = createServiceBuilder(module)
     .loadConfig(config)
