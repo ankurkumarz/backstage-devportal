@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router';
+import { Route } from 'react-router';
 import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
   CatalogEntityPage,
@@ -42,6 +42,8 @@ import { apertureTheme } from './theme/aperture';
 import { darkTheme, lightTheme } from '@backstage/theme';
 import { CloudCarbonFootprintPage } from '@cloud-carbon-footprint/backstage-plugin-frontend';
 import { NewRelicPage } from '@backstage/plugin-newrelic';
+import { HomepageCompositionRoot } from '@backstage/plugin-home';
+import { HomePage } from './components/home/HomePage';
 
 const app = createApp({
   apis,
@@ -119,7 +121,9 @@ const AppRouter = app.getRouter();
 
 const routes = (
   <FlatRoutes>
-    <Navigate key="/" to="catalog" />
+    <Route path="/" element={<HomepageCompositionRoot />}>
+      <HomePage />
+    </Route>
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"

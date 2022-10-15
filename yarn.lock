@@ -2359,6 +2359,24 @@
     luxon "^3.0.0"
     react-use "^17.2.4"
 
+"@backstage/plugin-home@^0.4.25":
+  version "0.4.25"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-home/-/plugin-home-0.4.25.tgz#4a56713ee2f1bab7cc163f0acdb288557632250b"
+  integrity sha512-SmUqrWf2wvnNUQEagZWJYc5AxmC/jIdMbgLQtC0fzl6u0AmBBy9Ln70LWDKtc1pHP8r70w8zpNj76p0byLyU/g==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.1"
+    "@backstage/config" "^1.0.2"
+    "@backstage/core-components" "^0.11.1"
+    "@backstage/core-plugin-api" "^1.0.6"
+    "@backstage/plugin-catalog-react" "^1.1.4"
+    "@backstage/plugin-stack-overflow" "^0.1.5"
+    "@backstage/theme" "^0.2.16"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    lodash "^4.17.21"
+    react-use "^17.2.4"
+
 "@backstage/plugin-jenkins-backend@^0.1.26":
   version "0.1.26"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-jenkins-backend/-/plugin-jenkins-backend-0.1.26.tgz#51ca7d5ca8e008791c2ac25d5182d51cd59d676c"
@@ -2823,6 +2841,25 @@
     "@material-ui/styles" "^4.10.0"
     cross-fetch "^3.1.5"
     rc-progress "3.4.0"
+    react-use "^17.2.4"
+
+"@backstage/plugin-stack-overflow@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-stack-overflow/-/plugin-stack-overflow-0.1.5.tgz#35217b8b7dfb2e1842ad8820cf4f94660ab9dc38"
+  integrity sha512-bJxwLUOKz4MIEvUF5IisXmZ9yi1WFVr4TKzyWv9xgSR3FLyPUojUYMzWqVEMALCR2GYVvPEst0zLTQl4H95lxg==
+  dependencies:
+    "@backstage/config" "^1.0.2"
+    "@backstage/core-components" "^0.11.1"
+    "@backstage/core-plugin-api" "^1.0.6"
+    "@backstage/plugin-home" "^0.4.25"
+    "@backstage/plugin-search-common" "^1.0.1"
+    "@backstage/theme" "^0.2.16"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@testing-library/jest-dom" "^5.10.1"
+    cross-fetch "^3.1.5"
+    lodash "^4.17.21"
+    qs "^6.9.4"
     react-use "^17.2.4"
 
 "@backstage/plugin-tech-radar@^0.5.16":
