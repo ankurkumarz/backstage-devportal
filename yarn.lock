@@ -7118,7 +7118,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
   version "17.0.17"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.17.tgz#2e3743277a793a96a99f1bf87614598289da68a1"
   integrity sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==
@@ -7972,6 +7972,7 @@ apexcharts@^3.26.3:
     "@backstage/plugin-catalog-react" "^1.1.4"
     "@backstage/plugin-cost-insights" "^0.11.31"
     "@backstage/plugin-github-actions" "^0.5.9"
+    "@backstage/plugin-home" "^0.4.25"
     "@backstage/plugin-jenkins" "^0.7.8"
     "@backstage/plugin-kubernetes" "^0.7.2"
     "@backstage/plugin-lighthouse" "^0.3.9"
@@ -7998,6 +7999,7 @@ apexcharts@^3.26.3:
     react-dom "^17.0.2"
     react-router "6.0.0-beta.0"
     react-router-dom "6.0.0-beta.0"
+    react-title-case "^1.0.1"
     react-use "^15.3.3"
 
 aproba@^1.0.3:
@@ -20095,6 +20097,13 @@ react-text-truncate@^0.19.0:
   dependencies:
     prop-types "^15.5.7"
 
+react-title-case@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-title-case/-/react-title-case-1.0.1.tgz#721c75c38539a7e33482bd6f803f8e01de391f81"
+  integrity sha512-CqrevHFh7UsU17gME6zhFDBhqi7MWWhz8KHba2jQVEF16DXjY3FNEjxdqjWDB1aO2ijQ/tAP32gurdUV3ZVkcg==
+  dependencies:
+    title-case "^3.0.2"
+
 react-transition-group@^2.5.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
@@ -22555,6 +22564,13 @@ tiny-warning@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
+
+title-case@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/title-case/-/title-case-3.0.3.tgz#bc689b46f02e411f1d1e1d081f7c3deca0489982"
+  integrity sha512-e1zGYRvbffpcHIrnuqT0Dh+gEJtDaxDSoG4JAIpq4oDFyooziLBIiYQv0GBT4FUAnUop5uZ1hiIAj7oAF6sOCA==
+  dependencies:
+    tslib "^2.0.3"
 
 tmp-promise@^3.0.2:
   version "3.0.3"

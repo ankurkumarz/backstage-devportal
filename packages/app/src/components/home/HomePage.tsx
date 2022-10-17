@@ -17,92 +17,28 @@
 import {
     HomePageToolkit,
     HomePageStarredEntities,
+    HeaderWorldClock,
+    ClockConfig,
     TemplateBackstageLogoIcon
   } from '@backstage/plugin-home';
-  import { wrapInTestApp, TestApiProvider } from '@backstage/test-utils';
+  import { wrapInTestApp } from '@backstage/test-utils';
   import { Content, Page, InfoCard } from '@backstage/core-components';
   import {
-    starredEntitiesApiRef,
-    MockStarredEntitiesApi,
-    entityRouteRef,
-    catalogApiRef,
-  } from '@backstage/plugin-catalog-react';
-  import {
     HomePageSearchBar,
-    searchPlugin,
   } from '@backstage/plugin-search';
   import { SearchContextProvider } from '@backstage/plugin-search-react';
   import { Grid, makeStyles } from '@material-ui/core';
   import React, { ComponentType } from 'react';
-
-  const entities = [
-    {
-      apiVersion: '1',
-      kind: 'Component',
-      metadata: {
-        name: 'mock-starred-entity',
-        title: 'Mock Starred Entity!',
-      },
-    },
-    {
-      apiVersion: '1',
-      kind: 'Component',
-      metadata: {
-        name: 'mock-starred-entity-2',
-        title: 'Mock Starred Entity 2!',
-      },
-    },
-    {
-      apiVersion: '1',
-      kind: 'Component',
-      metadata: {
-        name: 'mock-starred-entity-3',
-        title: 'Mock Starred Entity 3!',
-      },
-    },
-    {
-      apiVersion: '1',
-      kind: 'Component',
-      metadata: {
-        name: 'mock-starred-entity-4',
-        title: 'Mock Starred Entity 4!',
-      },
-    },
-  ];
-  
-  const mockCatalogApi = {
-    getEntities: async () => ({ items: entities }),
-  };
-  
-  const starredEntitiesApi = new MockStarredEntitiesApi();
-  starredEntitiesApi.toggleStarred('component:default/example-starred-entity');
-  starredEntitiesApi.toggleStarred('component:default/example-starred-entity-2');
-  starredEntitiesApi.toggleStarred('component:default/example-starred-entity-3');
-  starredEntitiesApi.toggleStarred('component:default/example-starred-entity-4');
+  import { Header } from '@backstage/core-components';
+  import {
+    identityApiRef,
+    useApi,
+  } from '@backstage/core-plugin-api';
+  import { getTimeBasedGreeting } from './timeUtil.js'
   
   export default {
-    title: 'Plugins/Home/Templates',
-    decorators: [
-      (Story: ComponentType<{}>) =>
-        wrapInTestApp(
-          <>
-            <TestApiProvider
-              apis={[
-                [catalogApiRef, mockCatalogApi],
-                [starredEntitiesApiRef, starredEntitiesApi],
-              ]}
-            >
-              <Story />
-            </TestApiProvider>
-          </>,
-          {
-            mountedRoutes: {
-              '/hello-company': searchPlugin.routes.root,
-              '/catalog/:namespace/:kind/:name': entityRouteRef,
-            },
-          },
-        ),
-    ],
+    title: 'Plugins/Home/Components/HeaderWorldClock',
+    decorators: [(Story: ComponentType<{}>) => wrapInTestApp(<Story />)],
   };
   
   const useStyles = makeStyles(theme => ({
@@ -115,18 +51,57 @@ import {
       borderRadius: '50px',
       margin: 'auto',
     },
+    headerBar: {
+        display: 'flex',
+        color: 'red',
+      },
   }));
-  
+  const timeFormat: Intl.DateTimeFormatOptions = {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+  };
+  const clockConfigs: ClockConfig[] = [
+       {
+         label: 'NYC',
+          timeZone: 'America/New_York',
+        },
+        {
+          label: 'UTC',
+          timeZone: 'UTC',
+        },
+        {
+          label: 'STO',
+          timeZone: 'Europe/Stockholm',
+        },
+        {
+          label: 'IST',
+          timeZone: 'Asia/Kolkata',
+        },
+  ];
+  const greeting = getTimeBasedGreeting();
+
   export const HomePage = () => {
     const classes = useStyles();
-  
+    const identityApi = useApi(identityApiRef);
+    const userName = identityApi.getUserId();
     return (
       <SearchContextProvider>
         <Page themeId="home">
           <Content>
-            
+          <Header
+                 title={`${greeting.greeting}, ${userName}`}
+                 tooltip={greeting.language}
+                 pageTitleOverride="Home">
+               <HeaderWorldClock
+                  clockConfigs={clockConfigs}
+                  customTimeFormat={timeFormat}
+                />  
+            </Header>
             <Grid container justifyContent="center" spacing={6}>
-              
+              <Grid container item xs={12} direction="row">
+                
+              </Grid>
               <Grid container item xs={12} alignItems="center" direction="row">
                 <HomePageSearchBar
                   classes={{ root: classes.searchBar }}
@@ -138,6 +113,17 @@ import {
                   <HomePageStarredEntities />
                 </Grid>
                 <Grid item xs={12} md={6}>
+                <InfoCard title="Technology Updates/News">
+                    <div>
+                        <ul>
+                            <li>Technology conference is coming up in Q4 2022</li>
+                            <li>New version of Application A will be released in Q1 2023</li>
+                            <li>Enterprise Architecture team published new standards for Cloud</li>
+                        </ul>
+                    </div>
+                  </InfoCard>
+                </Grid>
+                <Grid item xs={12} md={6}>
                   <HomePageToolkit
                     tools={Array(8).fill({
                       url: '#',
@@ -145,12 +131,6 @@ import {
                       icon: <TemplateBackstageLogoIcon />,
                     })}
                   />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <InfoCard title="Composable Section">
-                    {/* placeholder for content */}
-                    <div style={{ height: 370 }} />
-                  </InfoCard>
                 </Grid>
 
               </Grid>

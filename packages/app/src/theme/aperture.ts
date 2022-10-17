@@ -18,7 +18,7 @@ const baseTheme = createTheme({
     ...lightTheme.palette,
     primary: {
       main: '#0052CC',
-      light: '#4C9AFF',
+      light: '#ffc400',
       dark: '#172B4D',
     },
     secondary: {
@@ -86,11 +86,11 @@ const createCustomThemeOverrides = (
     BackstageHeader: {
       header: {
         backgroundImage: 'unset',
-        boxShadow: 'unset',
+        backgroundColor: theme.palette.primary.dark,
         paddingBottom: theme.spacing(1),
       },
       title: {
-        color: theme.palette.primary.dark,
+        color: theme.palette.primary.light,
         fontWeight: 900,
       },
       subtitle: {
