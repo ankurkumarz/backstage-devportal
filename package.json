@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
+    "render": "concurrently \"yarn start --config=../../app-config-render.yaml \" \"yarn start-backend --config=../../app-config-render.yaml\"",
     "start": "env $(cat .env | xargs) yarn workspace app start",
     "start-backend": "env $(cat .env | xargs) yarn workspace backend start",
     "build": "backstage-cli repo build --all",

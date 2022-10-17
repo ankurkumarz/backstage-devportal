@@ -1,6 +1,6 @@
 app:
   title: Developer Portal (customized by Ankur Kumar)
-  baseUrl: http://localhost:3010
+  baseUrl: https://devportal-moza.onrender.com
 
 organization:
   name: Dev Portal
@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://localhost:7007
+  baseUrl: https://devportal-moza.onrender.com
 
   # optionally add extra headers
   # extraRequestHeaders:
@@ -35,7 +35,7 @@ backend:
       # Allow your Jira instance for @roadiehq/backstage-plugin-jira
       - 'https://ankurkumarz.atlassian.net/'
   cors:
-    origin: http://localhost:3000
+    origin: https://devportal-moza.onrender.com
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
