@@ -7,9 +7,11 @@
   },
   "scripts": {
     "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
-    "render": "concurrently \"yarn start --config=../../app-config-render.yaml \" \"yarn start-backend --config=../../app-config-render.yaml\"",
+    "render": "concurrently \"yarn start-fe-render --config=../../app-config-render.yaml \" \"yarn start-be-render --config=../../app-config-render.yaml\"",
     "start": "env $(cat .env | xargs) yarn workspace app start",
+    "start-fe-render": "yarn workspace app start",
     "start-backend": "env $(cat .env | xargs) yarn workspace backend start",
+    "start-be-render": "yarn workspace backend start",
     "build": "backstage-cli repo build --all",
     "build-image": "yarn workspace backend build-image",
     "tsc": "tsc",

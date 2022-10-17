@@ -1,6 +1,6 @@
 app:
   title: Developer Portal (customized by Ankur Kumar)
-  baseUrl: http://localhost:3010
+  baseUrl: http://localhost:3000
 
 organization:
   name: Dev Portal
