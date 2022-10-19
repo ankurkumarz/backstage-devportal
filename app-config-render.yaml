@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: https://devportal-moza.onrender.com
+  baseUrl: https://devportal-moza.onrender.com:7007
 
   # optionally add extra headers
   # extraRequestHeaders:
@@ -196,9 +196,6 @@ catalog:
     
     - type: url
       target: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/api-info.yaml
-
-    - type: url
-      target: https://github.com/ankurkumarz/backstage-micro-app/blob/master/catalog-info.yaml
 
     - type: url
       target: https://github.com/ankurkumarz/cloudcost-inspector/blob/main/catalog-info.yaml
