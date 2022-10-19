@@ -1,6 +1,6 @@
 app:
   title: Developer Portal (customized by Ankur Kumar)
-  baseUrl: https://devportal-moza.onrender.com
+  baseUrl: http://0.0.0.0
 
 organization:
   name: Dev Portal
@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: https://devportal-moza.onrender.com:7007
+  baseUrl: http://0.0.0.0:7007
 
   # optionally add extra headers
   # extraRequestHeaders:
