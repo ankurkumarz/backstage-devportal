@@ -72,7 +72,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [ankurkumarz/backstage-devportal](https://github.com/ankurkumarz/backstage-devportal)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|57<br/>Tools used|12/14/23 <br/>Report generated|
+|59<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -357,9 +357,9 @@ Full tech stack [here](/techstack.md)
 </table>
 
 
-## <img src='https://img.stackshare.io/group.svg' /> Open source packages (26)</h2>
+## <img src='https://img.stackshare.io/group.svg' /> Open source packages (28)</h2>
 
-## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (24)
+## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (26)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
@@ -380,6 +380,7 @@ Full tech stack [here](/techstack.md)
 |[eslint-plugin-cypress](https://www.npmjs.com/eslint-plugin-cypress)|v2.12.1|10/15/22|Ankur Kumar |MIT|N/A|
 |[express](https://www.npmjs.com/express)|v4.18.1|10/06/22|Ankur Kumar |MIT|N/A|
 |[history](https://www.npmjs.com/history)|v5.3.0|10/06/22|Ankur Kumar |MIT|N/A|
+|[husky](https://www.npmjs.com/husky)|v2.7.0|10/06/22|Ankur Kumar |MIT|N/A|
 |[jest-junit](https://www.npmjs.com/jest-junit)|v8.0.0|10/06/22|Ankur Kumar |Apache-2.0|N/A|
 |[node-gyp](https://www.npmjs.com/node-gyp)|v5.1.1|10/14/22|Ankur Kumar |MIT|N/A|
 |[pg](https://www.npmjs.com/pg)|v8.8.0|10/06/22|Ankur Kumar |MIT|N/A|
@@ -387,6 +388,7 @@ Full tech stack [here](/techstack.md)
 |[react-router](https://www.npmjs.com/react-router)|v6.0.0|10/06/22|Ankur Kumar |MIT|N/A|
 |[react-router-dom](https://www.npmjs.com/react-router-dom)|v6.0.0|10/06/22|Ankur Kumar |MIT|N/A|
 |[react-scripts](https://www.npmjs.com/react-scripts)|v5.0.1|10/06/22|Ankur Kumar |MIT|N/A|
+|[winston](https://www.npmjs.com/winston)|v3.8.2|10/06/22|Ankur Kumar |MIT|N/A|
 
 
 ## <img width='24' height='24' src='https://img.stackshare.io/package_manager/977/default_9833f2ef0bbc2a946b4cc5e9307264033361076b.png'/> Apache Maven (2)
