@@ -1,11 +1,12 @@
 repo_name: ankurkumarz/backstage-devportal
 report_id: 6f86a185ab945cc4b08578e186afd1bb
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T15:17:59+00:00'
+timestamp: '2024-01-05T08:25:12+00:00'
 requested_by: ankurkumarz
 provider: github
 branch: main
-detected_tools_count: 57
+detected_tools_count: 59
 tools:
 - name: CSS 3
   description: The latest evolution of the Cascading Style Sheets language
@@ -15,6 +16,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: Java
   description: A concurrent, class-based, object-oriented, language specifically designed
@@ -25,6 +27,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -35,6 +38,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: Ruby
   description: A dynamic, interpreted, open source programming language with a focus
@@ -45,6 +49,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/989/ruby.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: TypeScript
   description: A superset of JavaScript that compiles to clean JavaScript output
@@ -55,6 +60,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: ExpressJS
   description: Sinatra inspired web development framework for node.js -- insanely
@@ -81,6 +87,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Front-End Frameworks
   image_url: https://img.stackshare.io/service/1904/default_44d81cb9fadbc3688b7e91a6d5217d0ea5358b57.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/app/package.json
   detection_source: packages/app/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -106,6 +113,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/app/package.json
   detection_source: packages/app/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -147,6 +155,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/2006/spring-framework-project-logo.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/scaffolder-templates/springboot-grpc-template/skeleton/pom.xml
   detection_source: scaffolder-templates/springboot-grpc-template/skeleton/pom.xml
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -173,6 +182,7 @@ tools:
   category: Data Stores
   sub_category: Databases
   image_url: https://img.stackshare.io/service/1028/ASOhU5xJ.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/backend/package.json
   detection_source: packages/backend/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -184,6 +194,7 @@ tools:
   category: Data Stores
   sub_category: Database Tools
   image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/app/public/robots.txt
   detection_source: packages/app/public/robots.txt
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -225,6 +236,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Virtual Machine Platforms & Containers
   image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -234,6 +246,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -243,6 +256,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/.github/workflows/codeql-analysis.yml
   detection_source: ".github/workflows/codeql-analysis.yml"
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-07 16:21:57.000000000 Z
@@ -282,6 +296,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/yarn.lock
   detection_source: yarn.lock
 - name: npm
   description: The package manager for JavaScript.
@@ -291,6 +306,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/scaffolder-templates/react-ssr-template/skeleton/package.json
   detection_source: scaffolder-templates/react-ssr-template/skeleton/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -303,6 +319,7 @@ tools:
   category: Application Hosting
   sub_category: Platform as a Service
   image_url: https://img.stackshare.io/service/3276/xWt1RFo6_400x400.jpg
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/scaffolder-templates/springboot-grpc-template/skeleton/src/main/resources/application.properties
   detection_source: scaffolder-templates/springboot-grpc-template/skeleton/src/main/resources/application.properties
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -312,6 +329,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/app/public/index.html
   detection_source: packages/app/public/index.html
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -323,6 +341,7 @@ tools:
   category: Communications
   sub_category: Large Language Model Tools
   image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/app/public/robots.txt
   detection_source: packages/app/public/robots.txt
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -349,6 +368,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal
   detection_source: Repo Metadata
 - name: Winston
   description: a multi-transport async logging library for node.js
@@ -356,6 +376,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/6668/9682013.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/packages/backend/package.json
   detection_source: packages/backend/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -364,6 +385,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/9527/5502029.jpeg
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/scaffolder-templates/react-ssr-template/skeleton/package.json
   detection_source: scaffolder-templates/react-ssr-template/skeleton/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
@@ -607,6 +629,20 @@ tools:
   detection_source: packages/app/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
+- name: husky
+  description: Prevents bad commit or push
+  package_url: https://www.npmjs.com/husky
+  version: 2.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15831/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/scaffolder-templates/react-ssr-template/skeleton/package.json
+  detection_source: scaffolder-templates/react-ssr-template/skeleton/package.json
+  last_updated_by: Ankur Kumar
+  last_updated_on: 2022-10-06 19:43:48.000000000 Z
 - name: jest-junit
   description: A jest reporter that generates junit xml files
   package_url: https://www.npmjs.com/jest-junit
@@ -705,6 +741,20 @@ tools:
   detection_source: scaffolder-templates/create-react-app/skeleton/package.json
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
+- name: winston
+  description: A logger for just about everything
+  package_url: https://www.npmjs.com/winston
+  version: 3.8.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16003/default_261820f5687b4c88a3e8f95c71b5e8dccd34c1d7.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/yarn.lock
+  detection_source: packages/backend/package.json
+  last_updated_by: Ankur Kumar
+  last_updated_on: 2022-10-06 19:43:48.000000000 Z
 - name: org.apache.tomcat:annotations-api
   description: Annotations Package
   version: 6.0.53
@@ -727,6 +777,7 @@ tools:
   category: Libraries
   sub_category: Maven Packages
   image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/ankurkumarz/backstage-devportal/blob/main/scaffolder-templates/springboot-grpc-template/skeleton/pom.xml
   detection_source: scaffolder-templates/springboot-grpc-template/skeleton/pom.xml
   last_updated_by: Ankur Kumar
   last_updated_on: 2022-10-06 19:43:48.000000000 Z
